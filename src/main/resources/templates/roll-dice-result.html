@@ -5,7 +5,10 @@
     <title>Roll Dice Result</title>
 </head>
 <body>
+<h1 th:text="${guess == diceRoll} ? 'Congrats you guessed correctly!': 'Bummer, you did not guess correctly!'"></h1>
 
+<h3>You guessed <span th:text="${guess}"></span></h3>
+<h3>The dice roll was a <span th:text="${diceRoll}"></span></h3>
 
 </body>
 </html>
