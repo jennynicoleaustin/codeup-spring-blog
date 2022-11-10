@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="partials :: head (Welcome)" />
+<head th:include="partials :: head ('Welcome')"/>
 <body>
-<nav th:replace="partials :: navbar" />
+
+<nav th:replace="partials :: navbar"/>
+<div class="container">
+
+    <footer th:replace="partials :: footer"/>
+</div> <!-- body container -->
 </body>
 </html>
