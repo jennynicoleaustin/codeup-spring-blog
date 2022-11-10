@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PostController {
     @GetMapping("/posts")
     public String getPostIndexPage () {
-        return "index";
+
+        return "/posts/index";
     }
 
-    @GetMapping(path = "/posts/{id}")
-    public String getIndividualPostByID (@PathVariable long id) {
+    @GetMapping(path = "/show")
+    public String getIndividualPostByID (@PathVariable(required = false) Long id) {
 
-        return "posts.{id}";
+        return "posts/show";
     }
 
 //    @GetMapping("/posts/create")
