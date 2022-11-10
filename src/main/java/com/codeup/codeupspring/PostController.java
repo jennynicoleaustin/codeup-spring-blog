@@ -15,7 +15,7 @@ public class PostController {
 
     @GetMapping(path = "/show")
     public String getIndividualPostByID (@PathVariable(required = false) Long id) {
-
+        Post firstPost = new Post("Welcome Day", "I so excited you are visiting my blog! I hope you stick around");
         return "posts/show";
     }
 

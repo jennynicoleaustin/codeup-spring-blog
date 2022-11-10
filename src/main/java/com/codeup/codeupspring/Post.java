@@ -3,6 +3,7 @@ package com.codeup.codeupspring;
 public class Post {
     private String title;
     private String body;
+    private Long id;
 
     public Post(String title, String body) {
         this.title = title;
