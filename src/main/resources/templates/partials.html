@@ -12,10 +12,9 @@
 </head>
 <body>
 <nav th:fragment="navbar" class="nav">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
+    <a class="nav-link" th:href="@{/}">Home</a>
+    <a class="nav-link" th:href="@{/posts}">All Posts</a>
     <a class="nav-link" href="#">Link</a>
-    <a class="nav-link" href="#">Link</a>
-    <a class="nav-link disabled">Disabled</a>
 </nav>
 <footer th:fragment="footer" class="fixed-bottom">
     ~ jenny austin

@@ -5,8 +5,12 @@
 
 <nav th:replace="partials :: navbar"/>
 <div class="container">
+    <div class="post" th:object="${post}">
+        <div th:text="*{title}"></div>
+        <div th:text="*{body}"></div>
+    </div>
 
-    <footer th:replace="partials :: footer"/>
 </div> <!-- body container -->
+<footer th:replace="partials :: footer"/>
 </body>
 </html>
