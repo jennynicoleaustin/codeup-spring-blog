@@ -1,4 +1,4 @@
-package com.codeup.codeupspring;
+package com.codeup.codeupspring.model;
 
 public class Post {
     private String title;
