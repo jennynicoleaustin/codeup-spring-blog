@@ -1,5 +1,8 @@
-package com.codeup.codeupspring.model;
+package com.codeup.codeupspring.entity;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Post {
     private String title;
     private String body;

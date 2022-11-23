@@ -1,6 +1,6 @@
 package com.codeup.codeupspring.webController;
 
-import com.codeup.codeupspring.model.Post;
+import com.codeup.codeupspring.entity.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
