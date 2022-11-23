@@ -1,31 +1,25 @@
 package com.codeup.codeupspring.entity;
 
-import javax.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Post {
+    @Column(name = "title", nullable = false, length = 200)
     private String title;
+
+    @Column(name = "body", nullable = false)
     private String body;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
 }

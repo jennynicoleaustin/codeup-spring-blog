@@ -1,6 +1,7 @@
 package com.codeup.codeupspring.webController;
 
 import com.codeup.codeupspring.entity.Post;
+import com.codeup.codeupspring.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,33 +13,30 @@ import java.util.List;
 
 @Controller
 public class PostController {
+    PostService postService;
 
     @GetMapping("/posts")
     public String getAllPostsPage(Model model) {
         List<Post> allPosts = new ArrayList<>();
-        Post post = new Post("Day One", "Day One on the blog! Check out what I did! ");
-        Post post2 = new Post("Day two", "Day teo on the blog! Check out what I did! ");
-        allPosts.add(post);
-        allPosts.add(post2);
         model.addAttribute("posts", allPosts);
         return "/posts/index";
     }
 
     @GetMapping(path = "/show")
     public String getIndividualPostByID(Model model, @PathVariable(required = false) Long id) {
-        Post firstPost = new Post("Welcome Day", "I so excited you are visiting my blog! I hope you stick around");
-        model.addAttribute("post", firstPost);
+        model.addAttribute("post");
         return "posts/show";
     }
 
-    //    @GetMapping("/posts/create")
-    //    public String CreatePostForm (Model model) {
-    //        model.addAttribute("post", new Post)
-    //        return "createPostForm";
-    //    }
+    @GetMapping(path = "/create")
+    public String createForm(Model model){
+        model.addAttribute("post", new Post());
+        return "posts/create";
+    }
 
-    @PostMapping("/posts/create")
-    public String submitCreatePostForm() {
+    @PostMapping("/submitCreateForm")
+    public String submitCreateForm(Post post) {
+        postService.savePost(post);
         return "redirect:/index";
     }
 }
