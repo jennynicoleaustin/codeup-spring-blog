@@ -1,4 +1,4 @@
-package com.codeup.codeupspring.web;
+package com.codeup.codeupspring.webController;
 
 import com.codeup.codeupspring.model.Post;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import java.util.List;
 public class PostController {
 
     @GetMapping("/posts")
-    public String getPostIndexPage(Model model) {
+    public String getAllPostsPage(Model model) {
         List<Post> allPosts = new ArrayList<>();
         Post post = new Post("Day One", "Day One on the blog! Check out what I did! ");
         Post post2 = new Post("Day two", "Day teo on the blog! Check out what I did! ");
