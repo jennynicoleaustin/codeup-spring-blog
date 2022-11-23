@@ -2,6 +2,7 @@ package com.codeup.codeupspring.webController;
 
 import com.codeup.codeupspring.entity.Post;
 import com.codeup.codeupspring.service.PostService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@AllArgsConstructor
 @Controller
 public class PostController {
     PostService postService;
@@ -37,6 +38,6 @@ public class PostController {
     @PostMapping("/submitCreateForm")
     public String submitCreateForm(Post post) {
         postService.savePost(post);
-        return "redirect:/index";
+        return "redirect:/posts";
     }
 }

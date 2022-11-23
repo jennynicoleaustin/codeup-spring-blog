@@ -11,6 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "post")
 public class Post {
     @Column(name = "title", nullable = false, length = 200)
     private String title;
