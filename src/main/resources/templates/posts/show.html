@@ -6,11 +6,11 @@
 <nav th:replace="partials :: navbar"/>
 <div class="container">
     <div class="post">
-        <div th:text="${post.title}"></div>
-        <div th:text="${post.body}"></div>
-        <div th:text="${post.user.email}"></div>
+        <h1 class="display-6" th:text="${post.title}"></h1>
+        <p class="h6 text-muted" th:text="${'post by: ' + post.user.username}"></p>
+        <p class="lead" th:text="${post.body}"></p>
+        <small th:text="${'contact me at: ' + post.user.email}"></small>
     </div>
-
 </div> <!-- body container -->
 <footer th:replace="partials :: footer"/>
 </body>

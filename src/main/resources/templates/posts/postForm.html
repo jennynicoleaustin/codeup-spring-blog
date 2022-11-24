@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="partials :: head ('Create')"/>
+<head th:include="partials :: head ('Form')"/>
 <body>
 <nav th:replace="partials :: navbar"/>
 
 <div class="container">
     <form class="form-control mb-3" th:action="@{/submitPostForm}" method="post" th:object="${post}">
-        <div class="h1 text-center">Create a new Post</div>
         <input class="form-control mb-3" type="text" placeholder="Title" th:field="*{title}" th:value="*{title}">
         <textarea class="form-control mb-3" placeholder="Body" th:field="*{body}" th:value="*{body}"></textarea>
-<!--        <input type="hidden" placeholder="id" th:field="*{id}" th:value="*{id}">-->
-<!--        <input placeholder="id" th:field="*{user}" th:value="*{user}">-->
+        <input type="hidden" placeholder="id" th:field="*{id}" th:value="*{id}">
+<!--        <input placeholder="user" th:field="*{user_id}" th:value="*{user_id}">-->
         <br><br>
         <input class="form-control mb-3" type="submit" value="Submit">
     </form>

@@ -1,7 +1,6 @@
 package com.codeup.codeupspring.webController;
 
 import com.codeup.codeupspring.entity.Post;
-import com.codeup.codeupspring.entity.User;
 import com.codeup.codeupspring.service.PostService;
 import com.codeup.codeupspring.service.UserService;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Controller
@@ -27,13 +25,13 @@ public class PostController {
 
     @GetMapping(path = "/show")
     public String getPost(Model model, @PathVariable(required = false) Long id) {
-        Optional<Post> post = postService.getPost(id);
+        Post post = postService.getPost(id);
         model.addAttribute("post");
         return "posts/show";
     }
 
-    @GetMapping(path = "/create")
-    public String postForm(Model model) {
+    @GetMapping(path = "/postForm")
+    public String postForm(Model model, @PathVariable(required = false) Long id) {
         model.addAttribute("post", new Post());
         return "posts/postForm";
     }
@@ -45,9 +43,7 @@ public class PostController {
 
     @PostMapping("/submitPostForm")
     public String submitCreateForm(@ModelAttribute Post post) {
-        User user = userService.getUser(1L);
-        post.setUser(user);
-        postService.savePost(post);
+        postService.savePost(post, 1L);
         return "redirect:/posts";
     }
 }
