@@ -1,6 +1,7 @@
 package com.codeup.codeupspring.service;
 
 import com.codeup.codeupspring.entity.User;
+import com.codeup.codeupspring.exception.UserNotFoundException;
 import com.codeup.codeupspring.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,9 @@ public class UserServiceImp implements UserService{
         return userRepository.save(user);
     }
     @Override
-    public Optional<User> getUser(Long id) {
-        return userRepository.findById(id);
+    public User getUser(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return unwrapUser(user, id);
     }
 
 
@@ -33,5 +35,10 @@ public class UserServiceImp implements UserService{
     @Override
     public List<User> getUsers() {
         return (List<User>) userRepository.findAll();
+    }
+
+    static User unwrapUser(Optional<User> entity, Long id) {
+        if(entity.isPresent()) return entity.get();
+        else throw new UserNotFoundException(id);
     }
 }
