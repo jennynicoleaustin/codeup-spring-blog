@@ -8,6 +8,7 @@
 <div class="post" th:each="post: ${posts}">
     <div class="title" th:text="${post.title}"></div>
     <div class="body" th:text="${post.body}"></div>
+    <div class="body" th:text="${post.user.email}"></div>
 </div>
 </div> <!-- body container -->
 <footer th:replace="partials :: footer"/>

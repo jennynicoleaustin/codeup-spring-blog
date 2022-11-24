@@ -33,7 +33,7 @@ public class PostController {
     }
 
     @GetMapping(path = "/create")
-    public String postForm(Model model, @RequestParam(required = false) Long id) {
+    public String postForm(Model model) {
         model.addAttribute("post", new Post());
         return "posts/postForm";
     }
@@ -44,8 +44,8 @@ public class PostController {
     }
 
     @PostMapping("/submitPostForm")
-    public String submitCreateForm(@ModelAttribute Post post, Long user_id) {
-        User user = userService.getUser(user_id);
+    public String submitCreateForm(@ModelAttribute Post post) {
+        User user = userService.getUser(1L);
         post.setUser(user);
         postService.savePost(post);
         return "redirect:/posts";
