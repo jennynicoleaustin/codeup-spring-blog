@@ -36,9 +36,10 @@ public class PostController {
         return "posts/postForm";
     }
 
-    public String editForm() {
-
-        return "postForm";
+    @GetMapping("editForm/{id}")
+    public String editForm(Model model, @PathVariable Long id) {
+        model.addAttribute("post", postService.getPost(id));
+        return "posts/editForm";
     }
 
     @PostMapping("/submitPostForm")
