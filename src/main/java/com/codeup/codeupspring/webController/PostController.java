@@ -5,9 +5,7 @@ import com.codeup.codeupspring.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,13 +30,18 @@ public class PostController {
     }
 
     @GetMapping(path = "/create")
-    public String createForm(Model model){
-        model.addAttribute("post", new Post());
-        return "posts/create";
+    public String postForm(Model model, @RequestParam(required = false) Long id) {
+        model.addAttribute("post", postService.getPost(id));
+        return "posts/postForm";
     }
 
-    @PostMapping("/submitCreateForm")
-    public String submitCreateForm(Post post) {
+    public String editForm() {
+
+        return "postForm";
+    }
+
+    @PostMapping("/submitPostForm")
+    public String submitCreateForm(@ModelAttribute Post post) {
         postService.savePost(post);
         return "redirect:/posts";
     }

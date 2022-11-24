@@ -7,9 +7,10 @@
 <div class="container">
     <form class="form-control mb-3" th:action="@{/submitCreateForm}" method="post" th:object="${post}">
         <div class="h1 text-center">Create a new Post</div>
-        <input class="form-control mb-3" type="text" placeholder="Title" th:field="*{title}">
-        <textarea class="form-control mb-3" placeholder="Body" th:field="*{body}"></textarea>
-        <input type="hidden" placeholder="id" th:field="*{id}">
+        <input class="form-control mb-3" type="text" placeholder="Title" th:field="*{title}" th:value="*{title}">
+        <textarea class="form-control mb-3" placeholder="Body" th:field="*{body}" th:value="*{body}"></textarea>
+        <input type="hidden" placeholder="id" th:field="*{id}" th:value="*{id}">
+        <input placeholder="id" th:field="*{user}" th:value="*{user}">
         <br><br>
         <input class="form-control mb-3" type="submit" value="Submit">
     </form>
