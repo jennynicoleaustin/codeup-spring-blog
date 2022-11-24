@@ -11,7 +11,7 @@
             <p class="h6 text-muted" th:text="${'post by: ' + post.user.username}"></p>
             <p class="lead" th:text="${post.body}"></p>
             <small th:text="${'contact me at: ' + post.user.email}"></small>
-            <a class="btn btn-secondary" role="button" th:href="@{/editForm/(id = ${post.id})}">Update</a>
+<!--            <a class="btn btn-secondary" role="button" th:href="@{/editForm/(id = ${post.id})}">Update</a>-->
 <!--            <a class="btn btn-secondary" role="button" th:href="@{/show/(id = ${post.id})}">View More</a>-->
 
         </div>
