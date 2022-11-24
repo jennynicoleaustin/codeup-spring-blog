@@ -23,4 +23,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
 }
