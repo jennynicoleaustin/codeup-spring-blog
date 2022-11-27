@@ -2,6 +2,7 @@ package com.codeup.codeupspring.service;
 
 import com.codeup.codeupspring.entity.User;
 import com.codeup.codeupspring.entity.UserWithRoles;
+import com.codeup.codeupspring.exception.EntityNotFoundException;
 import com.codeup.codeupspring.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,7 +19,7 @@ public class UserDetailsLoader implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = users.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("No user found for " + username);
+            throw new EntityNotFoundException(username, User.class);
         }
         return new UserWithRoles(user);
     }

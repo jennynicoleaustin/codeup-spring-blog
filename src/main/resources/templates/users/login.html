@@ -5,7 +5,8 @@
 <nav th:replace="partials :: navbar"/>
 
 <div class="container">
-<div class="h1 text-center">Log in</div>    <div th:if="${param.error}">
+    <div class="h1 text-center">Log in</div>
+    <div th:if="${param.error}">
         Invalid Username and Password.
     </div>
     <div th:if="${param.logout}">
