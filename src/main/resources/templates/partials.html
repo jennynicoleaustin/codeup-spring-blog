@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head (title)">
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -15,8 +16,11 @@
     <a class="nav-link" th:href="@{/}">Home</a>
     <a class="nav-link" th:href="@{/posts}">All Posts</a>
     <a class="nav-link" th:href="@{/postForm}">Create</a>
+    <a class="nav-link" th:href="@{/login}">Login</a>
+    <form th:action="@{/logout}" th:method="post-"><button class="btn-link btn">Logout</button></form>
 </nav>
 <footer th:fragment="footer" class="fixed-bottom">
+
     ~ jenny austin
 </footer>
 </body>

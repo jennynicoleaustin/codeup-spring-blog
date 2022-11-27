@@ -1,12 +1,17 @@
 package com.codeup.codeupspring.webController;
 
 import com.codeup.codeupspring.entity.Post;
+import com.codeup.codeupspring.entity.User;
 import com.codeup.codeupspring.service.PostService;
 import com.codeup.codeupspring.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -33,6 +38,7 @@ public class PostController {
     @GetMapping(path = "/postForm")
     public String postForm(Model model, @PathVariable(required = false) Long id) {
         model.addAttribute("post", new Post());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "posts/postForm";
     }
 

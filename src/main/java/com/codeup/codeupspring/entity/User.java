@@ -10,8 +10,15 @@ import java.util.List;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "password"}))
 public class User {
+    public User (User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
