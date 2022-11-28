@@ -41,7 +41,6 @@ public class PostController {
     public String postForm(Model model, @PathVariable(required = false) Long id) {
         model.addAttribute("post", new Post());
 //        mailtrap --- for mail service tester (playmailer = java version)
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "posts/postForm";
     }
 
@@ -53,6 +52,7 @@ public class PostController {
 
     @PostMapping("/submitPostForm")
     public String submitCreateForm(@ModelAttribute Post post) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postService.savePost(post, 1L);
         return "redirect:/posts";
     }
