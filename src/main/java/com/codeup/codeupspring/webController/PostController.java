@@ -2,6 +2,7 @@ package com.codeup.codeupspring.webController;
 
 import com.codeup.codeupspring.entity.Post;
 import com.codeup.codeupspring.entity.User;
+import com.codeup.codeupspring.service.EmailService;
 import com.codeup.codeupspring.service.PostService;
 import com.codeup.codeupspring.service.UserService;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.List;
 public class PostController {
     PostService postService;
     UserService userService;
+    EmailService emailService;
 
     @GetMapping("/posts")
     public String getPosts(Model model) {
@@ -38,6 +40,7 @@ public class PostController {
     @GetMapping(path = "/postForm")
     public String postForm(Model model, @PathVariable(required = false) Long id) {
         model.addAttribute("post", new Post());
+//        mailtrap --- for mail service tester (playmailer = java version)
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "posts/postForm";
     }
