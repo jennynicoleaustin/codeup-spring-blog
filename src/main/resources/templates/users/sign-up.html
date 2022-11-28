@@ -8,13 +8,13 @@
 
 <form class="form-control mb-3" th:action="@{/sign-up}" method="POST" th:object="${user}">
   <label class="mb-3" for="username">Username</label>
-  <input class="form-control mb-3"  id="username" th:field="*{username}">
+  <input type="text" class="form-control mb-3"  id="username" th:field="*{username}">
 
   <label class="mb-3" for="email">Email</label>
-  <input class="form-control mb-3"  id="email" th:field="*{email}">
+  <input type="email" class="form-control mb-3"  id="email" th:field="*{email}">
 
   <label class="mb-3" for="password">Password</label>
-  <input class="form-control mb-3"  id="password" type="password" th:field="*{password}">
+  <input type="password" class="form-control mb-3"  id="password" th:field="*{password}">
 
   <input class="form-control mb-3"  value="Sign me up!" type="submit">
 </form>
